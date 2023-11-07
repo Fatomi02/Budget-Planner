@@ -20,16 +20,19 @@ createBtn.addEventListener("click", () => {
     if(enteredReason.trim().length <= 0 || enteredAmount <= 0 || enteredAmount.trim().length <= 0){
         alertCtrl.buttons = ['OK'];
     }
+    else{
+        const newItem  = document.createElement("ion-item");
+        newItem.textContent = `${enteredReason}: $${enteredAmount}`
+        expenseList.appendChild(newItem);
+    
+        total += +enteredAmount
+    
+        totalExpenses.textContent = `$${total}`;
+    
+        clear();
+    }
 
-    const newItem  = document.createElement("ion-item");
-    newItem.textContent = `${enteredReason}: $${enteredAmount}`
-    expenseList.appendChild(newItem);
 
-    total += +enteredAmount
-
-    totalExpenses.textContent = `$${total}`;
-
-    clear();
 })
 
 clearBtn.addEventListener("click", clear);
